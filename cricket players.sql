@@ -319,7 +319,7 @@ INSERT INTO currency_table VALUES(19,' HongKongDollar', 'Euterpe', 'Hong Kong ',
 INSERT INTO currency_table VALUES(20,' BulgarianLev', 'Gothic', 'Bulgaria', 'StoneGrey', 'Cryptocurrency', '2000-01-11', 'sunday', 2000, 16);
 
 SELECT * FROM currency_table;
-
+commit;
 SELECT count(*) FROM currency_table;
 
 /*LIKE*/
@@ -362,7 +362,8 @@ SELECT SUBSTR(currency_color, 3, 7),currency_color FROM currency_table;
 SELECT SUBSTR(currency_motif, 3, 7),currency_motif from currency_table;
 SELECT SUBSTR(currency_release_day, 3, 7),currency_release_day from currency_table;
 SELECT SUBSTR(currency_type, 3, 7),currency_type from currency_table;
-
+SELECT LENGTH(currency_name),currency_name from currency_table;
+SELECT * FROM currency_table;
 
 /*IN*/
  SELECT * FROM currency_table WHERE country_name IN('India', 'Japan', 'Egypt');
@@ -401,5 +402,185 @@ DELETE FROM currency_table WHERE id=8;
 DELETE FROM currency_table WHERE id=99;
 DELETE FROM currency_table WHERE id=16;
 
+select * from football_info where game_genres = 1;
+
+SELECT id,currency_name,length(currency_name) from currency_table;
+
+/*update currency_table set currency_name = 'G BP' WHERE ID = 2;*/
 
 
+
+/*football table*/
+CREATE TABLE football_info(id int, game_genres enum('action_adventures_game', 'adventure_game', 'action_game', 'strategy_game', 'sports_game'), no_of_teams int, organization_name enum('port_vale', 'river_plate', 'sunderland', 'pittsburgh_steelers', 'AFC_Bournemouth'), team_name varchar(50), team_captain_name varchar(100), captain_age int, jersey_no int, no_of_goals_by_team int, no_of_goals_by_captain int, played_on date, played_day varchar(20), field_name varchar(100), played_in varchar(50), type_of_football varchar(100), goal_keeper_name varchar(30), mid_fielder_name varchar(30), defender_name varchar(40), phases_of_football varchar(50), football_coverage enum('highlights', 'live'));
+
+INSERT INTO football_info VALUES(1, 4, 22, 2, 'Argentina', 'Messi', 32, 48, 5, 1, '2022-12-22', 'Thursday', 'Wembley_Stadium', 'England', 'American_Football', 'Arjun', 'Chamerian', 'Stephen', 'Early_pre_season', 1);
+INSERT INTO football_info VALUES(2, 3, 17, 1, 'Broncos', 'Neymar', 31, 22, 4, 2, '2023-01-12', 'friday', 'old_trafford', 'california', 'futsal', 'Simon', 'Kevin', 'Sergio', 'pre_season', 2);
+INSERT INTO football_info VALUES(3, 2, 23, 3, 'Bengals', 'Zlatan', 30, 17, 3, 3, '2021-02-13', 'saturday', 'levi_stadium', 'arizona', 'flag_football', 'Manuel', 'Toni', 'Virgil', 'in_season', 1);
+INSERT INTO football_info VALUES(4, 1, 24, 5, 'Arsenal', 'Robert', 22, 27, 6, 4, '2020-03-14', 'sunday', 'phoenix_stadium', 'texas', 'gaelic_football', 'Gianluigi', 'Luka', 'Giorgio', 'off_season', 2);
+INSERT INTO football_info VALUES(5, 5, 25, 4, 'Big Blue', 'Zinedine', 29, 5, 7, 2, '2019-04-15', 'monday', 'camp_nou', 'new_jersey', 'rugby_league', 'Ederson', 'Frenkie', 'Ruben', 'Early_pre_season', 1);
+INSERT INTO football_info VALUES(6, 4, 26, 5, 'Barcelona', 'Paul_pogba', 28, 63, 8, 1, '2018-05-16', 'tuesday', 'NRG_stadium', 'maryland', 'canadian_football', 'Peter', 'Leon', 'Raphael', 'in_season', 2);
+INSERT INTO football_info VALUES(7, 3, 27, 4, 'Aston_Villa', 'Suarez', 27, 24, 9, 3, '2017-06-17', 'wednesday', 'rose_bowl', 'lllinois', 'beach_soccer', 'Iker_Casillas', 'Marco', 'Thiago', 'pre_season', 1);
+INSERT INTO football_info VALUES(8, 2, 28, 3, 'Sunderland', 'Iniesta', 26, 75, 10, 1, '2016-07-18', 'Thursday', 'anfield', 'colorada', 'street_football', 'Jan_oblak', 'Thiago', 'Aymeric', 'off_season', 2);
+INSERT INTO football_info VALUES(9, 1, 29, 2, 'Port_vale', 'Kevin', 25, 86, 11, 5, '2015-08-19', 'friday', 'metlife_stadium', 'pennsylvania', 'three_sided_football', 'Edwin_van_der_sar', 'Pedri', 'Marquinhos', 'Early_pre_season', 1);
+INSERT INTO football_info VALUES(10, 5, 32, 1, 'Crystal_palace', 'Pele', 24, 96, 12, 6, '2014-09-20', 'saturday', 'fedexfield', 'bavaria', 'freestyle_football', 'Diego', 'Valverde', 'Franz', 'pre_season', 2);
+INSERT INTO football_info VALUES(11, 4, 42, 5, 'AFC_Bournemouth', 'Eden_Hazard', 23, 863, 9, 3, '2013-10-21', 'sunday', 'soldier_field', 'missouri', 'blind_soccer', 'Benagilo', 'Jude', 'Paolo', 'in_season', 1);
+INSERT INTO football_info VALUES(12, 3, 52, 4, 'Manchester_dortmund', 'Ronaldinho', 22, 086, 1, 1, '2012-11-22', 'monday', 'lincoln_financial', 'michigan', 'cycle_ball', 'Neuer', 'Bruno', 'Rio', 'off_season', 2);
+INSERT INTO football_info VALUES(13, 2, 62, 3, 'Tottenham_Hotspur', 'Karim_Benzema', 21, 864, 6, 3, '2011-12-23', 'tuesday', 'heinz_field', 'louisiana', 'touch', 'Justo_Villar', 'Koke', 'Carles', 'Early_pre_season', 1);
+INSERT INTO football_info VALUES(14, 1, 72, 2, 'Baltimore_Ravens', 'Harry_kane', 20, 97, 7, 4, '2010-01-24', 'friday', 'hard_rock', 'florida', 'jorkyball', 'Vincent_Encyeama', 'Carlos', 'Marcelo', 'pre_season', 2);
+INSERT INTO football_info VALUES(15, 5, 82, 1, 'Tampa_Bay', 'Xavi', 19, 404, 8, 3, '2009-02-25', 'saturday', 'lambeau_field', 'wisconsin', 'tag_rugby', 'Essam_Hadary', 'Locatelli', 'Milan', 'in_season', 1);
+INSERT INTO football_info VALUES(16, 4, 56, 5, 'Caroline_panthers', 'Cristiano', 18, 56, 7, 2, '2008-03-26', 'sunday', 'Arena_pantanal', 'barnsley', 'walking_football', 'Arsenal', 'Sandro', 'Benedikt', 'Early_pre_season', 2);
+INSERT INTO football_info VALUES(17, 3, 76, 4, 'Chicago_bears', 'Radamel', 20, 89, 6, 1, '2007-04-27', 'monday', 'Ellis_park', 'birmingham', 'jorkyball', 'Brad_friedel', 'Andre', 'Howedes', 'pew_season', 1);
+INSERT INTO football_info VALUES(18, 2, 34, 3, 'Dallas_cowboys', 'Neymar', 21, 379, 5, 4, '2006-05-28', 'tuesday', 'Obsidian', 'contvery', 'touch', 'Justo_villar', 'Marcel', 'Marquinhos', 'in_season', 2);
+INSERT INTO football_info VALUES(19, 1, 75, 2, 'Detroit_lions', 'Xabi', 22, 453, 4, 2, '2005-06-29', 'wednesday', 'Dawn_ground', 'derby', 'Blind', 'Vincent_ecyeama', 'Dani', 'Varane', 'off_season', 1);
+INSERT INTO football_info VALUES(20, 5, 24, 1, 'Green_bay_packers', 'David', 23, 848, 3, 1, '2004-07-20', 'thursday', 'Foreman_field', 'doncaster', 'Powerchair_football', 'Essam', 'Parejo', 'Otamedi', 'in_season', 2);
+
+commit;
+
+SELECT * FROM football_info;
+
+/*COUNT*/
+SELECT count(*) FROM football_info; 
+
+/*WHERE*/
+SELECT * FROM football_info WHERE id=17;
+SELECT * FROM football_info WHERE phases_of_football = 'in_season';
+
+/*ALTERING the Table*/
+ALTER TABLE football_info MODIFY jersey_no int AFTER team_captain_name;
+
+
+/*AND*/
+SELECT * FROM football_info WHERE no_of_teams = 26 AND played_day = 'tuesday'; 
+SELECT * FROM football_info WHERE jersey_no = 313 AND captain_age = 22; /*doesn't exist since one condition is false*/
+
+
+/*OR*/
+SELECT * FROM football_info WHERE type_of_football = 'flag_football' OR id = 17;
+
+
+/*UPDATE*/
+UPDATE football_info SET football_coverage = 'highlights';
+
+
+/*IN*/
+SELECT * FROM football_info WHERE id IN(13,17,22,10);
+SELECT * FROM football_info WHERE played_day IN('thursday', 'friday', 'saturday');
+
+
+/*NOT IN*/
+SELECT * FROM football_info WHERE id NOT IN(20,10,11,15); 
+
+
+/*ROLL BACK*/
+/*SAVE POINT*/
+
+
+/*BETWEEN*/
+SELECT * FROM football_info WHERE id BETWEEN 4 AND 8;
+
+
+/*LIKE*/
+SELECT * FROM football_info WHERE goal_keeper_name LIKE 'a%';  /*Staring letter should start with a*/
+SELECT * FROM football_info WHERE football_coverage LIKE '%s'; /*ending letter should end with s*/
+SELECT * FROM football_info WHERE team_captain_name LIKE '%a%';  /*anywhere in the letter*/
+
+
+/*DISTINCT - unique elements*/
+SELECT DISTINCT(played_on) from football_info;
+SELECT DISTINCT (phases_of_football) from football_info;
+
+
+/*INSTR*/
+SELECT INSTR(team_captain_name, 'a'), team_captain_name from football_info;
+SELECT INSTR(field_name, 't'), field_name from football_info;
+
+
+/*SUBSTR*/
+SELECT SUBSTR(team_name, 3, 7), team_name from football_info;
+SELECT SUBSTR(type_of_football, 4, 8), type_of_football from football_info;
+
+ 
+/*UPPER*/
+SELECT UPPER(team_captain_name) FROM football_info;
+SELECT UPPER(field_name) FROM football_info;
+
+
+/*LOWER*/
+SELECT LOWER(mid_fielder_name) FROM football_info;
+SELECT LOWER(defender_name) FROM football_info;
+
+
+/*CONCAT*/
+SELECT CONCAT(played_on, played_day) FROM football_info;
+SELECT CONCAT(played_in, type_of_football) FROM football_info;
+
+
+/*SUM*/
+SELECT SUM(no_of_goals_by_captain) from football_info;
+SELECT SUM(no_of_teams) from football_info;
+
+
+/*MIN*/
+SELECT min(no_of_goals_by_team) from football_info;
+SELECT min(jersey_no) from football_info; 
+
+/*MAX*/
+SELECT max(captain_age) from football_info;
+SELECT max(no_of_teams) from football_info;
+
+
+/*AVG*/
+SELECT AVG(captain_age) from football_info;
+SELECT AVG(jersey_no) from football_info;
+
+
+
+
+/*Mountains*/
+
+CREATE TABLE mountains_info(id int not null, mountain_type enum('Rocky', 'Fold', 'Appalachian', 'Alps', 'Himalayas'), height int check(height >= 2500), mountain_name varchar(50) unique, place varchar(50) unique, state_name varchar(50) unique, mountain_shape enum('Diamond', 'Pyramid', 'inverted', 'hourglass'), nature_of_mountain varchar(50) not null, weather_type varchar(50) not null, no_of_rivers_nearby int check(no_of_rivers_nearby <10));
+
+INSERT INTO mountains_info VALUES(1, 2, 8586, ' Kanchenjunga  ', ' Eastern_Himalayan ', 'Sikkim', 4, 'everchanging', 'Alpine', 4);
+INSERT INTO mountains_info VALUES(2, 1, 4567, ' Nanda_Devi ', ' Western_Himalayan  ', 'Manali', 3, 'ravaging winds', 'Thunderstorm', 3);
+INSERT INTO mountains_info VALUES(3, 3, 2700, '  Western_Ghats  ', ' Karakoram ', 'Spiti', 2, 'freezing', 'Hurricane', 5);
+INSERT INTO mountains_info VALUES(4, 4, 3200, '  Anamudi ', 'Zanskar', ' Himachal_pradesh ', 1, 'craggy_slopes', 'Blizzard', 6);
+INSERT INTO mountains_info VALUES(5, 5, 3333, ' Eastern_ghats ', ' Ladakh_range ', ' Shimla', 4, 'barren_snow_caps', 'Storm', 7);
+INSERT INTO mountains_info VALUES(6, 2, 3939, '   Kamet ', ' Tibetan_plateau ', 'Munnar', 3, 'alpine_meadows', 'Rain', 8);
+INSERT INTO mountains_info VALUES(7, 3, 4848, '  Chaukhamba  ', ' Nanga_parbat ', ' Nainital', 2, 'Swiss_alps', 'Cloud', 9);
+INSERT INTO mountains_info VALUES(8, 4, 8484, ' Saltoro_kangri  ', 'Greater_himalayan_range', 'Auli', 1, 'mount_logan', 'Winter_storm', 1);
+INSERT INTO mountains_info VALUES(9, 5, 8989, '  Karakoram  ', 'Himalayan_range', 'Nanda_devi', 4, 'mount_fuji', 'snow', 2);
+INSERT INTO mountains_info VALUES(10, 1, 7337, ' Satpura_range ', 'Aravalli_range', 'Dharamshala', 3, 'mauna_kea', 'Hail', 3);
+INSERT INTO mountains_info VALUES(11, 2, 7500, ' Mamostong ', 'Western_ghats', ' Gulmarg', 2, 'grand_teton', 'Precipitation', 4);
+INSERT INTO mountains_info VALUES(12, 3, 7489, '  Trisul ', 'Eastern_ghats', 'Mussoorie', 1, 'bogda', 'Lightining', 5);
+INSERT INTO mountains_info VALUES(13, 4, 6545, ' Aravali_range ', 'Satpura', 'Nubra_valley ', 4, 'aroki', 'fog', 6);
+INSERT INTO mountains_info VALUES(14, 5, 4008, ' Vindhya_Range  ', 'Vindhya', 'Coorg ', 3, 'huayna', 'dust_storm', 7);
+INSERT INTO mountains_info VALUES(15, 1, 3788, '  Saser_kangri ', 'Purvanchal', 'Ooty', 2, 'snow_covered', 'wind', 8);
+INSERT INTO mountains_info VALUES(16, 2, 2989, ' Doddabetta ', 'Atlas_mountain', 'Gangtok ', 1, 'freezing_temperatures', 'monsoon', 9);
+INSERT INTO mountains_info VALUES(17, 3, 4070, '  Nilgiri ', 'Andes_range', 'Shillong ', 4, 'ravaging_winds', 'drizzle', 3);
+INSERT INTO mountains_info VALUES(18, 4, 7654, '  Guru_Shikar ', 'Carpathians', 'Darjeeling', 3, 'strong_blow', 'flood', 4);
+INSERT INTO mountains_info VALUES(19, 5, 4509, ' Mount_Shikar ', 'Alps_of_europe', 'Uttarakhand ', 2, 'elevated_snow', 'ice_storm', 6);
+INSERT INTO mountains_info VALUES(20, 1, 3030, '   Mount_Saramati ', 'Brooks_range ', 'Kodaikanal', 1, 'terrain_relief', 'cyclone', 7);
+
+commit;
+
+/*LTRIM*/
+SELECT LTRIM(mountain_name) FROM mountains_info;
+SELECT LTRIM(place) from mountains_info;
+SELECT LTRIM(state_name) FROM mountains_info;
+SELECT LTRIM(mountain_shape) FROM mountains_info;
+SELECT LTRIM(nature_of_mountain) FROM mountains_info;
+
+/*RTRIM*/
+SELECT RTRIM(mountain_name) FROM mountains_info;
+SELECT RTRIM(weather_type) FROM mountains_info;
+SELECT RTRIM(mountain_type) FROM mountains_info;
+SELECT RTRIM(mountain_name) FROM mountains_info;
+SELECT RTRIM(mountain_shape) FROM mountains_info;
+
+/*ORDER BY*/
+SELECT * FROM mountains_info order by id DESC;
+SELECT * FROM mountains_info order by height DESC;
+SELECT * FROM mountains_info order by no_of_rivers_nearby DESC;
+
+SELECT * FROM mountains_info; 
+SELECT height FROM mountains_info;

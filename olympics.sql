@@ -255,7 +255,7 @@ DELETE FROM moni;
 
 
 /*IN - 
-In order to avoid multiplr OR we use IN
+In order to avoid multiple OR we use IN
 Syntax - SELECT * FROM table_name WHERE id IN(1,2,3,4);
 */
 
@@ -337,4 +337,101 @@ INSERT INTO cric_info VALUES(3, 3, 100, 'Gujarat');
 		  -  Will return the no_of_characters in a particular column
 */
 SELECT length(game_type) as length_of_data from olympic_games;
+
+CREATE TABLE mtrproducts(id int, prod_name varchar(20), prod_price int);
+
+INSERT  INTO mtrproducts VALUES(1, 'Chilli Powder', 100);
+INSERT  INTO mtrproducts VALUES(2, 'Sambar Powder', 110);
+INSERT  INTO mtrproducts VALUES(3, 'Rasam Powder', 120);
+INSERT  INTO mtrproducts VALUES(4, 'Garam Masala Powder', 130);
+
+/*LTRIM(Left remove) - will remove the leading spaces*/
+SELECT LTRIM('  XWORKZ') AS length;
+SELECT LTRIM(prod_name) FROM mtrproducts;
+
+/*RTRIM(Right trim) - will remove the trailing spaces*/
+SELECT id, prod_name, length(prod_name) from mtrproducts;
+SELECT RTRIM('laptop   ') as trail_space;
+SELECT RTRIM(prod_name) as trail from mtrproducts;
+
+INSERT INTO mtrproducts VALUES(5, 'karapudi  ', 190);
+SELECT * FROM mtrproducts;
+
+
+SELECT LTRIM(RTRIM('   PROJECTOR')) as spaces;
+
+
+/*ORDER BY: */
+SELECT * FROM olympic_games;
+SELECT * FROM olympic_games order by id;
+
+/*Sort in descending order*/
+SELECT * FROM olympic_games order by id DESC;
+
+
+
+
+/*CONSTRAINTS: 
+- are used to set some rules or limit the type of data
+- are applied to the columns(only)
+- are applied while creating the table
+- by using alter also can apply the constraints
+
+TYPES:
+1) NOT NULL Constraints: - will not accept any null values.
+			 - will accept duplicate values
+*/
+
+/*CREATE TABLE table_name(column_name datatype constraint);*/
+CREATE TABLE marraige(id int not null, bride_name varchar(30), groom varchar (20) not null, pujari_name varchar(20));
+
+INSERT INTO marraige VALUES(1, 'athiya shetty', 'Kl rahul', 'abcd');
+INSERT INTO marraige VALUES(null, 'athiya shetty', 'Kl rahul', 'abcd');  /*not applicable*/
+
+/*Contraint violation - error related to constraints*/
+
+
+/*2) Unique Constraint: - will accept null values
+			 - will not accept any duplicate values
+             - 
+*/
+CREATE TABLE ghost(id int not null, ghost_name varchar(20), ghost_song varchar(30) unique);
+
+SELECT * FROM ghost;
+ 
+INSERT INTO ghost VALUES(1, 'Annabele', 'rara');
+INSERT INTO ghost VALUES(2, null, 'thangali');
+INSERT INTO ghost VALUES(3, 'Annabel', 'Kanchana');
+
+INSERT INTO ghost VALUES(5, 'Annabel', 'Kanchana'); /*since id is unique*/
+
+DESC ghost;
+
+
+ALTER TABLE ghost ADD COLUMN dress_code varchar(30) default 'white';
+
+/*3)CHECK Constraint: - limit the range of constraint
+					  -  Only for numeric data(order by)
+   these 3 are column level constraints: not null, unique, check                   
+                      */
+                      
+CREATE TABLE serials(id int, ser_name varchar(20) unique, director varchar(20) not null unique, episode int check(episode>=500));
+
+INSERT INTO serials VALUES(1, 'Gatimella', 'Arjun', 600);
+INSERT INTO serials VALUES(2, 'Mane_ondu_mooru_bagilu', 'spoorthi', 498); /*not accept >= 500 check condition*/
+
+CREATE TABLE makeupset(id int unique, brand varchar(40) not null unique, type enum('powder', 'perfume', 'cream'), price int, expiry_date date, quantity int, check(price >= 50 and quantity < 5));
+
+SELECT * FROM makeupset;
+
+INSERT INTO makeupset VALUES(1, 'ponds', 2, 53, '2023-01-23', 3);
+INSERT INTO makeupset VALUES(2, 'Himalaya', 'cream', 55, '2023-01-13', 4);
+INSERT INTO makeupset VALUES(null, 'patanjali', 1, 55, '2023-01-03', 3);
+
+
+
+
+
+
+
 

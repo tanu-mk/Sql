@@ -22,5 +22,24 @@ SELECT *FROM river;
 
 SELECT name,id FROM river;
 
+CREATE TABLE cric(id int, cric_name varchar(30));
+
+SELECT * FROM cric;
+
+
+INSERT INTO cric values(2,'test');
+savepoint b;
+
+savepoint a;
+
+rollback to a;
+
+rollback to b;
+INSERT INTO cric values(4,'t10');
+
+savepoint c;
+
+savepoint d;
+rollback to d;
 
 
