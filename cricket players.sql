@@ -534,7 +534,14 @@ SELECT AVG(captain_age) from football_info;
 SELECT AVG(jersey_no) from football_info;
 
 
+ALTER TABLE mountains_info modify id int;
 
+ALTER TABLE currency_table add constraint id_pk primary key(id);
+
+SELECT * FROM currency_table;
+select * from mountains_info;
+
+ALTER TABLE mountains_info add constraint  foreign key(id) references currency_table(id);
 
 /*Mountains*/
 
@@ -584,3 +591,94 @@ SELECT * FROM mountains_info order by no_of_rivers_nearby DESC;
 
 SELECT * FROM mountains_info; 
 SELECT height FROM mountains_info;
+
+
+
+ 
+/*task : paint*/
+CREATE TABLE paint(id int not null, version int not null, brand varchar(30) not null unique, color varchar(40) primary key, tool varchar(20) not null unique, type varchar(30) not null unique, price int not null, paint_code int, paint_complextion varchar(30), paint_variable varchar(30), check(paint_code >300));
+
+INSERT INTO paint VALUES(1, 5.5, 'Asian', 'Mint Green', 'Brush', 'Flat', 675, 2217, 'Dark', 'Resin' );
+INSERT INTO paint VALUES(2, 5.6, 'Benjamin', 'orange', 'rag_rolling', 'egg_shell', 267, 7458, 'light', 'latex' );
+INSERT INTO paint VALUES(3, 5.7, 'Berger', 'purple', 'stenciling', 'satin', 378, 3462, 'Dark', 'binder' );
+INSERT INTO paint VALUES(4, 5.8, 'Sherwin', 'pink', 'dry_brushing', 'shaped', 283, 4683, 'light', 'Resin' );
+INSERT INTO paint VALUES(5, 5.9, 'Farrow', 'brown', 'splattering', 'vowel', 793, 564, 'Dark', 'latex' );
+INSERT INTO paint VALUES(6, 5.1, 'Dulux', 'cream', 'glazing', 'slagin', 278, 9876, 'light', 'binder' );
+INSERT INTO paint VALUES(7, 5.2, 'Kansai', 'navy_blue', 'sgraffito', 'mavin', 172, 4563, 'Dark', 'Resin' );
+INSERT INTO paint VALUES(8, 5.3, 'Behr', 'Turquoise', 'gestural', 'pro', 217, 5673, 'light', 'latex' );
+INSERT INTO paint VALUES(9, 5.4, 'Shalimar', 'Coral', 'under_painting', 'ultra', 2172, 3673, 'Dark', 'binder' );
+INSERT INTO paint VALUES(10, 5.25, 'Pittsburg', 'Aqua', 'pouring', 'sheer', 976, 8645, 'light', 'Resin' );
+INSERT INTO paint VALUES(11, 5.34, 'AkzoNobel', 'jewel_tone', 'max_pro', 'underneath', 563, 4563, 'Dark', 'binder' );
+INSERT INTO paint VALUES(12, 5.22, 'Indigo', 'pastel_tones', 'dabbing', 'hinder', 278, 2354, 'light', 'latex' );
+INSERT INTO paint VALUES(13, 5.17, 'Glidden', 'Arsenic', 'palette_knife', 'jajjle', 876, 1122, 'light', 'Resin' );
+INSERT INTO paint VALUES(14, 5.27, 'Nippon', 'icy_blue', 'Small_Brush', 'yolk', 368, 2217, 'Dark', 'binder' );
+INSERT INTO paint VALUES(15, 5.21, 'Valspar', 'beige', 'pencil_stenciling', 'sather', 467, 1722, 'light', 'latex' );
+INSERT INTO paint VALUES(16, 5.10, 'Jotun', 'red_schemes', 'ragging_rolling', 'gather', 289, 1710, 'Dark', 'Resin' );
+INSERT INTO paint VALUES(17, 5.13, 'Dutch', 'Indigo', 'glazzing_view', 'pro_launch', 384, 1317, 'light', 'binder' );
+INSERT INTO paint VALUES(18, 5.11, 'Nippon_Pro', 'tilt_yellow', 'snow', 'nested', 453, 6754, 'Dark', 'binder' );
+INSERT INTO paint VALUES(19, 5.76, 'Garnish', 'maroon', 'winter_spring', 'glow_spring', 9821, 1317, 'light', 'Resin' );
+INSERT INTO paint VALUES(20, 5.04, 'Diamond', 'black', 'spring_view', 'sprainless', 926, 1424, 'Dark', 'Latex' );
+
+commit;
+
+
+
+
+
+/*lipstick*/
+CREATE TABLE lipstick(id int not null, brand_name varchar(20), lipstick_color varchar(20), lipstick_code int not null, shade_no int not null, flavour varchar(30) not null unique, finish_type varchar(20), price int not null unique, lipstick_complextion varchar(20), type varchar(30), foreign key(lipstick_color) references paint (color));
+
+INSERT INTO lipstick VALUES(1, 'Mac', 'Mint Green', 546, 89, 'rose_petals', 'Matte', 876, 'Dark', 'water_resistant');
+INSERT INTO lipstick VALUES(2, 'lakme', 'orange', 567, 17, 'apple_crunch', 'lip_gloss', 564, 'light', 'smudge_proof');
+INSERT INTO lipstick VALUES(3, 'eyeconic', 'purple', 836, 18, 'cherry_burst', 'shiny', 642, 'Dark', 'long_lasting');
+INSERT INTO lipstick VALUES(4, 'sugar', 'pink', 367, 19, 'my_glamm', 'gloss', 764, 'light', 'dust_proof');
+INSERT INTO lipstick VALUES(5, 'revlon', 'brown', 376, 20, 'blueberry', 'Matte', 279, 'Dark', 'water_resistant');
+INSERT INTO lipstick VALUES(6, 'nykaa', 'cream', 894, 21, 'cranberry', 'glass_look', 863, 'light', 'smudge_proof');
+INSERT INTO lipstick VALUES(7, 'Maybelline', 'navy_blue', 5472, 22, 'mango', 'Matte', 346, 'Dark', 'long_lasting');
+INSERT INTO lipstick VALUES(8, 'Avon', 'Turquoise', 7903, 23, 'lenphor', 'lip_tint', 683, 'light', 'dust_proof');
+INSERT INTO lipstick VALUES(9, 'Urban Decay', 'Coral', 351, 24, 'blue_heaven', 'shiny', 258, 'Dark', 'smudge_proof');
+INSERT INTO lipstick VALUES(10, 'Glossier', 'Aqua', 1341, 25, 'butter', 'gloss', 234, 'light', 'water_resistant');
+INSERT INTO lipstick VALUES(11, 'Mary Kay', 'jewel_tone', 2311, 26, 'cherry', 'lip_smudge', 784, 'Dark', 'dust_proof');
+INSERT INTO lipstick VALUES(12, 'Clarins', 'pastel_tones', 4562, 27, 'revlon', 'line_frame', 347, 'light', 'long_lasting');
+INSERT INTO lipstick VALUES(13, 'Iman', 'Arsenic', 3561, 28, 'rassberry', 'lip_trunct', 896, 'Dark', 'water_resistant');
+INSERT INTO lipstick VALUES(14, 'Arden', 'icy_blue', 2351, 29, 'squeezed_leechy', 'glassy', 457, 'light', 'dust_proof');
+INSERT INTO lipstick VALUES(15, 'Body_shop', 'beige', 2356, 30, 'peech', 'matty', 485, 'Dark', 'smudge_proof');
+INSERT INTO lipstick VALUES(16, 'Smash_box', 'red_schemes', 1346, 31, 'tempting', 'dilight', 176, 'light', 'water_resistant');
+INSERT INTO lipstick VALUES(17, 'clutch', 'Indigo', 4562, 32, 'easier', 'fair', 48, 'Dark', 'dust_proof');
+INSERT INTO lipstick VALUES(18, 'nectar', 'tilt_yellow', 7643, 33, 'sequence', 'lilting', 49, 'Dark', 'long_lasting');
+INSERT INTO lipstick VALUES(19, 'joyeaux', 'maroon', 5674, 34, 'lavender', 'hi-neck', 50, 'light', 'dust_proof');
+INSERT INTO lipstick VALUES(20, 'entice', 'black', 3468, 35, 'trail', 'normal', 51, 'Dark', 'smudge_proof');
+
+commit;
+
+
+group by, having, lpad, rpad, all joins, subquery 10
+
+/*Sub query*/
+SELECT lipstick_complextion FROM lipstick where lipstick_color = (SELECT color FROM paint WHERE brand = 'Asian');
+SELECT lipstick_code FROM lipstick where lipstick_color = (SELECT color FROM paint WHERE type = 'vowel');
+SELECT lipstick_color FROM lipstick where lipstick_color = (SELECT color FROM paint WHERE price = 793);
+SELECT finish_type FROM lipstick where lipstick_color = (SELECT color FROM paint WHERE brand = 'Nippon');
+SELECT id FROM lipstick where lipstick_color = (SELECT color FROM paint WHERE color = 'black');
+
+
+/*group by*/
+SELECT SUM(price) as fare from lipstick group by lipstick_code;
+
+SELECT * FROM paint;
+
+
+/*having*/
+SELECT COUNT(price) as num, price from paint group by price HAVING num < 1000;
+
+
+/*inner join*/
+SELECT * FROM paint inner join lipstick on paint.id = lipstick.id;
+
+
+/*left join*/
+SELECT * FROM paint LEFT JOIN lipstick on paint.version = lipstick.brand_name;
+
+
+/*right join*/
+SELECT * FROM paint RIGHT JOIN lipstick on paint.paint_code = lipstick.shade_no;
